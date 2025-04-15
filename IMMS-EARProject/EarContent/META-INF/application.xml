@@ -1,0 +1,17 @@
+<application xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="7">
+    <module>
+        <web>
+            <web-uri>imms-web.war</web-uri>
+            <context-root>/imms-web</context-root>
+        </web>
+    </module>
+    <module>
+        <ejb>imms-ejb.jar</ejb>
+    </module>
+    <module>
+        <web>
+            <web-uri>imms-api.war</web-uri>
+            <context-root>/api</context-root>
+        </web>
+    </module>
+</application>

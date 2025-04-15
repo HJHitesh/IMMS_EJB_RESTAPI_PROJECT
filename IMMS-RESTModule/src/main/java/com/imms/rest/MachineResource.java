@@ -1,21 +1,36 @@
 package com.imms.rest;
 
-import com.imms.ejb.MachineService;
 
-import jakarta.ejb.EJB;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.*;
+import java.util.List;
 
-@Path("/machine")
+import com.imms.model.Machine;
+
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+@Path("/machines")
+@Stateless
 public class MachineResource {
-
-    @EJB
-    private MachineService service;
+    @PersistenceContext private EntityManager em;
 
     @GET
-    @Path("/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getMachineStatus(@PathParam("id") int id) {
-        return this.service.getMachineStatus(id);
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Machine> getAllMachines() {
+        return em.createQuery("SELECT m FROM Machine m", Machine.class).getResultList();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addMachine(Machine machine) {
+        em.persist(machine);
+        return Response.status(Response.Status.CREATED).build();
     }
 }

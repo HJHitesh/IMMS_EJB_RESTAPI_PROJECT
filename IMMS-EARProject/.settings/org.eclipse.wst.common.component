@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="IMMS-EARProject">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="IMMS-EJBModule.jar" deploy-path="/" handle="module:/resource/IMMS-EJBModule/IMMS-EJBModule">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="IMMS-EJBModuleClient.jar" deploy-path="/" handle="module:/resource/IMMS-EJBModuleClient/IMMS-EJBModuleClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="IMMS-WebModule.war" deploy-path="/" handle="module:/resource/IMMS-WebModule/IMMS-WebModule">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="IMMS-RESTModule.war" deploy-path="/" handle="module:/resource/IMMS-RESTModule/IMMS-RESTModule">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
